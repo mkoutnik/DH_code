@@ -150,7 +150,7 @@ if (linear_temperature == 1)   % temperature varies linearly from surface to bed
 
 elseif (prescribe_temperature == 1)    
       
-   T_z_use = 273.15 - 15;     
+   T_z_use = 273.15 - 5;     
    T_field_0 = repmat(T_z_use, N_x_mesh, N_z);   % replicate everywhere 
                                   
    % Or add in something more realistic?
@@ -175,14 +175,18 @@ end   % if statement on temperature options
   
   if (LGM_transient == 1)
       
-    load DH_DATA/Boundary_conditions/Diamond_Hill/DH_deglaciation_scenarios.mat
+  %  load DH_DATA/Boundary_conditions/Diamond_Hill/DH_deglaciation_scenarios.mat
     
- %   S_at_GL = S_0_in + interp1([t_P(1) -Smooth9ka.Time' 0], [Smooth9ka.HeightAboveModern(1) Smooth9ka.HeightAboveModern' Smooth9ka.HeightAboveModern(end)], t_P,'linear', 'extrap');
+  %  S_at_GL = S_0_in + interp1([t_P(1) -Smooth9ka.Time' 0], [Smooth9ka.HeightAboveModern(1) Smooth9ka.HeightAboveModern' Smooth9ka.HeightAboveModern(end)], t_P,'linear', 'extrap');
   
   %  S_at_GL = S_0_in + interp1([t_P(1) -Stepwise9ka.Time' 0], [Stepwise9ka.HeightAboveModern(1) Stepwise9ka.HeightAboveModern' Stepwise9ka.HeightAboveModern(end)], t_P,'linear', 'extrap');
   
-    S_at_GL = S_0_in + interp1([PollardModel.Time'], [PollardModel.HeightAboveModern'], t_P,'linear', 'extrap');
-  
+  % S_at_GL = S_0_in + interp1([PollardModel.Time'], [PollardModel.HeightAboveModern'], t_P,'linear', 'extrap');
+    
+
+  load DH_DATA/Boundary_conditions/SPRATT_ens.mat
+  S_at_GL = S_0_in + interp1([SPRATT_tau1000_ocfac0_5_shelf5.Time'], [SPRATT_tau1000_ocfac0_5_shelf5.HeightAboveModern'], t_P, 'linear', 'extrap');
+    
     disp (' ')
     disp(' check S_at_GL in MAIN_Darwin! ')
     disp(' ')

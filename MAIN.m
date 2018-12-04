@@ -108,17 +108,17 @@ lower_resolution = 0;   % Runs faster. Use spatial step of multiple km.
 % - - - - - - - - - - - - - - - - - - - - - - -                                                 
 % Only one of these should be set = 1 at a time. 
 % For Darwin:
-deformation_only                           = 1;
+deformation_only                           = 0;
 sliding_only                               = 0; 
-deformation_plus_sliding                   = 0; 
+deformation_plus_sliding                   = 1; 
 deformation_sliding_lateraldrag            = 0; % not included yet!
 deformation_sliding_longstress             = 0; % not included yet!
 deformation_sliding_lateraldrag_longstress = 0; % not included yet!
 
 % For Hatherton (always as XX2)
 deformation_only2                           = 0;
-sliding_only2                               = 1; 
-deformation_plus_sliding2                   = 0; 
+sliding_only2                               = 0; 
+deformation_plus_sliding2                   = 1; 
 deformation_sliding_lateraldrag2            = 0; % not included yet!
 deformation_sliding_longstress2             = 0; % not included yet!
 deformation_sliding_lateraldrag_longstress2 = 0; % not included yet!
